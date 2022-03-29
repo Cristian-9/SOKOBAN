@@ -21,10 +21,10 @@ class Sokoban:
     print ("Sokoban v0.2 by Cristian-9 \n\n")
 
   def imprimirMapa (self):
-    print ("[][][][[[[][][][][][][][][][][]")  
+    print ("***************************")  
     for fila in self.map:
       print(fila)
-    print ("[][][][[[[][][][][][][][][][][]")
+    print ("***************************")
     print ()
     
   def moverDerecha (self):
@@ -52,10 +52,10 @@ class Sokoban:
       self.columnax += 1
       #Personaje, Caja_Meta,Espacio
     elif self.map[self.filay][self.columnax] == 0 and self.map[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 1 :
-      self.map[self.filay][self.columnax] = 1
-      self.map[self.filay][self.columnax + 1] = 5 
-      self.map[self.filay][self.columnax + 2] = 2
-      self.columnax += 1
+          self.map[self.filay][self.columnax] = 1
+          self.map[self.filay][self.columnax + 1] = 5 
+          self.map[self.filay][self.columnax + 2] = 2
+          self.columnax += 1
       #Personaje,Caja_Meta,Meta
     elif self.map[self.filay][self.columnax] == 0 and self.map[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 4 :
       self.map[self.filay][self.columnax] = 1 
@@ -68,20 +68,34 @@ class Sokoban:
       self.map[self.filay][self.columnax + 1] = 4 
       self.columnax += 1     
       #Personaje_Meta, Meta
-      if self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 4 :
-       self.map[self.filay][self.columnax] = 4
-       self.map[self.filay][self.columnax + 1] = 5 
-       self.columnax += 1
+    if self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 4 :
+      self.map[self.filay][self.columnax] = 4
+      self.map[self.filay][self.columnax + 1] = 5 
+      self.columnax += 1
       #Personaje_Meta,Caja,Espacio
     elif self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 2 and self.map[self.filay + 2] == 1:
-       self.map[self.filay][self.columnax] =4 
-      self.map[self.filay][self.columnax + 1] = 0
+      self.map[self.filay][self.columnax] = 4 
+      self.map[self.filay][self.columnax + 1] =0 
       self.map[self.filay][self.columnax + 2] = 2
       self.columnax += 1 
+      #Personaje_Meta,Caja,Meta
+    elif self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 2 and self.map[self.filay + 2] ==4 :
+      self.map[self.filay][self.columnax] = 4
+      self.map[self.filay][self.columnax + 1] = 0
+      self.map[self.filay][self.columnax + 2] = 6
+      self.columnax += 1 
+    elif self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 1:
+      self.map[self.filay][self.columnax] = 4
+      self.map[self.filay][self.columnax + 1] = 5
+      self.map[self.filay][self.columnax + 2] = 2
+      self.columnax += 1 
+      #Prsonaje_Meta,Caja_Meta,Meta
+    elif self.map[self.filay][self.columnax] == 5 and self.map[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 4:
+      self.map[self.filay][self.columnax] =4 
+      self.map[self.filay][self.columnax + 1] =5 
+      self.map[self.filay][self.columnax + 2] = 6
+      self.columnax += 1 
       
-
-
-
 juego = Sokoban()
 
 juego.imprimirMapa()
