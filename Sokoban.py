@@ -34,7 +34,7 @@ class Sokoban:
       self.mapa[self.filay][self.columnax + 1] = 0
       self.columnax += 1
     #Muñeco, Meta
-    elif self.mapa[self.filay][self.columnax] == 0 and self.map[self.filay][self.columnax] == 4:
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax] == 4:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 5
       self.posx += 1
@@ -51,7 +51,7 @@ class Sokoban:
       self.mapa[self.filay][self.columnax + 2] = 5
       self.columnax += 1
       #Personaje, Caja_Meta,Espacio
-    elif self.mapa[self.filay][self.columnax] == 0 and self.map[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 1 :
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.map[self.filay + 2] == 1 :
           self.mapa[self.filay][self.columnax] = 1
           self.mapa[self.filay][self.columnax + 1] = 5 
           self.map[self.filay][self.columnax + 2] = 2
@@ -95,21 +95,42 @@ class Sokoban:
       self.mapa[self.filay][self.columnax + 1] =5 
       self.mapa[self.filay][self.columnax + 2] = 6
       self.columnax += 1 
-      
-      
-juego = Sokoban()
-
+    juego = Sokoban()     
+  
+  def moverIzquierda(self):
+      #espacio, personaje
+    if self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 0:
+      self.map[self.filay][self.columnax] = 0
+      self.mapa[self.filay][self.columnax - 1] = 1
+      self.columnax -= 1
+      #meta,personaje
+    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax] == 0:
+      self.mapa[self.filay][self.columnax] = 5
+      self.mapa[self.filay][self.columnax +-1] = 1
+      self.posx -= 1
+      #espacio,caja,personaje
+    elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay - 2] == 0:
+      self.mapa[self.filay][self.columnax] = 6 
+      self.mapa[self.filay][self.columnax - 1] = 0
+      self.mapa[self.filay][self.columnax - 2] = 1
+      self.columnax - 1
+      #meta,caja,personaje
+    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay - 2] == 0:
+      self.mapa[self.filay][self.columnax] = 5
+      self.mapa[self.filay][self.columnax - 1] = 0
+      self.mapa[self.filay][self.columnax - 2] = 1
+      self.columnax - 1
+juego = Sokoban()   
 juego.imprimirMapa()
-
 while True: #Bucle para jugar N veces
   instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\n"
   print(instrucciones)
-  movimientos = input(":") #Lee el movimiento del muñeco
-  if movimientos == "d": #Si es d - moverá a la derecha
+  movimientos = input("mover a:") #Lee el movimiento del muñeco
+  if movimientos == "d":
     juego.moverDerecha()
     juego.imprimirMapa()
-  def moverIzquierda (self):
-    if self.map[self.filay][self.columnax] == 1 and self.map[self.filay][self.columnax - 1] == 0:
-      self.map[self.filay][self.columnax] = 0
-      self.map[self.filay][self.columnax - 1] = 1
-      self.columnax -= 1
+  elif movimientos == "a":
+    juego.moverIzquierda()
+    juego.imprimirMapa()
+    
+      
