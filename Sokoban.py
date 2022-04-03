@@ -9,7 +9,7 @@ class Sokoban:
   mapa = [
     [3,3,3,3,3,3,3,3,3],
     [3,1,1,1,1,1,1,1,3],
-    [3,1,1,1,0,1,1,1,3],
+    [3,1,4,1,0,1,1,4,3],
     [3,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3]
 ]
@@ -28,17 +28,17 @@ class Sokoban:
     print ()
     
   def moverDerecha (self):
-    #Muñeco, Espacio
+    #Muñeco, Espacio 1
     if self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 1:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 0
       self.columnax += 1
-    #Muñeco, Meta
-    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax] == 4:
+    #Muñeco, Meta 2
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 4:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 5
-      self.posx += 1
-    #Muñeco, Caja, Espacio
+      self.columnax + 1
+    #Muñeco, Caja, Espacio 3
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay + 2] == 1:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 0
@@ -99,15 +99,15 @@ class Sokoban:
   
   def moverIzquierda(self):
       #espacio, personaje
-    if self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 0:
-      self.map[self.filay][self.columnax] = 0
-      self.mapa[self.filay][self.columnax - 1] = 1
+    if self.mapa[self.filay][self.columnax] == 0 and   self.mapa[self.filay][self.columnax - 1] == 1:
+      self.mapa[self.filay][self.columnax] = 1
+      self.mapa[self.filay][self.columnax - 1] = 0
       self.columnax -= 1
       #meta,personaje
-    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax] == 0:
+    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax + 1] == 0:
       self.mapa[self.filay][self.columnax] = 5
-      self.mapa[self.filay][self.columnax +-1] = 1
-      self.posx -= 1
+      self.mapa[self.filay][self.columnax + 1] = 1
+      self.columnax + 1
       #espacio,caja,personaje
     elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay - 2] == 0:
       self.mapa[self.filay][self.columnax] = 6 
