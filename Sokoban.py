@@ -39,7 +39,7 @@ class Sokoban:
       self.mapa[self.filay][self.columnax + 1] = 5
       self.columnax + 1
     #personaje, Caja, Espacio 
-    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.columnax + 1] == 1:
+    elif self.mapa[self.filay][self.columnax] == 0 and  self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.columnax + 1] == 1:
       self.mapa[self.filay][self.columnax] = 1  
       self.mapa[self.filay][self.columnax + 1] = 0
       self.mapa[self.filay][self.columnax + 2] = 2
@@ -185,6 +185,8 @@ class Sokoban:
 juego = Sokoban()   
 juego.imprimirMapa()
 while True: #Bucle para jugar N veces
+  posicion =""[self.filay,self.columnax]"""
+  print(posicion)
   instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba"
   print(instrucciones)
   movimientos = input("mover a:") #Lee el movimiento del muñeco
@@ -197,5 +199,4 @@ while True: #Bucle para jugar N veces
   elif movimientos =="w":
     juego.moverArriba()
     juego.imprimirMapa()
-    
-      
+        
