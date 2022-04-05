@@ -53,10 +53,10 @@ class Sokoban:
       self.columnax + 1
       #Personaje, Caja_Meta,Espacio
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax + 2] == 1 :
-          self.mapa[self.filay][self.columnax] = 1
-          self.mapa[self.filay][self.columnax + 1] = 5 
-          self.mapa[self.filay][self.columnax + 2] = 2
-          self.columnax += 1
+      self.mapa[self.filay][self.columnax] = 1
+      self.mapa[self.filay][self.columnax + 1] = 5 
+      self.mapa[self.filay][self.columnax + 2] = 2
+      self.columnax += 1
       #Personaje,Caja_Meta,Meta
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax + 2] == 4 :
       self.mapa[self.filay][self.columnax] = 1 
