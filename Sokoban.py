@@ -11,7 +11,7 @@ class Sokoban:
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,3,1,1,1,1,3],
-    [3,1,1,1,0,1,2,1,1,1,4,1,1,3],
+    [3,1,1,1,0,1,1,4,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,4,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
@@ -39,64 +39,64 @@ class Sokoban:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 5
       self.columnax += 1
-    #personaje, Caja, Espacio 
+    #muñeco,caja,espacio
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay][self.columnax + 2] == 1:
       self.mapa[self.filay][self.columnax] =  1
       self.mapa[self.filay][self.columnax + 1] = 0 
       self.mapa[self.filay][self.columnax + 2] = 2
       self.columnax += 1
-      #Personaje, Caja, Meta
+    #personaje,caja,meta
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay][self.columnax + 2] == 4:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 0
       self.mapa[self.filay][self.columnax + 2] = 6
-      self.columnax + 1
+      self.columnax += 1
       #Personaje, Caja_Meta,Espacio
-    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax + 2] == 1 :
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax + 2] == 1:
       self.mapa[self.filay][self.columnax] = 1
-      self.mapa[self.filay][self.columnax + 1] = 5 
-      self.mapa[self.filay][self.columnax + 2] = 2
+      self.mapa[self.filay][self.columnax + 1] = 5
+      self.mapa[self.filay][self.columnax + 2] = 6
       self.columnax += 1
       #Personaje,Caja_Meta,Meta
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax + 2] == 4 :
       self.mapa[self.filay][self.columnax] = 1 
-      self.mapa[self.filay][self.columnax + 1] = 6 
-      self.mapa[self.filay][self.columnax + 2] =  2
+      self.mapa[self.filay][self.columnax + 1] = 5 
+      self.mapa[self.filay][self.columnax + 2] =  6
       self.columnax += 1
-      #Personaje_Meta, Espacio
-    if self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 1:
+        #Personaje_Meta, Espacio
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 1:
       self.mapa[self.filay][self.columnax] = 4
       self.mapa[self.filay][self.columnax + 1] = 0
-      self.columnax += 1     
-      #Personaje_Meta, Meta
-    if self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 4 :
+      self.columnax += 1
+        #Personaje_Meta, Meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 4:
       self.mapa[self.filay][self.columnax] = 4
-      self.mapa[self.filay][self.columnax + 1] = 5 
+      self.mapa[self.filay][self.columnax + 1] = 5
       self.columnax += 1
       #Personaje_Meta,Caja,Espacio
-    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay ][self.comlumnax + 2] == 1:
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay ][self.columnax + 2] == 1:
       self.mapa[self.filay][self.columnax] = 4 
       self.mapa[self.filay][self.columnax + 1] =0 
       self.mapa[self.filay][self.columnax + 2] = 2
-      self.columnax += 1 
+      self.columnax += 1
       #Personaje_Meta,Caja,Meta
     elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 2 and self.mapa[self.filay][self.columnax + 2] ==4 :
       self.mapa[self.filay][self.columnax] = 4
       self.mapa[self.filay][self.columnax + 1] = 0
       self.mapa[self.filay][self.columnax + 2] = 6
-      self.columnax += 1 
+      self.columnax += 1
       #personaje_meta,caja_meta,espacio
     elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax +2] == 1:
       self.mapa[self.filay][self.columnax] = 4
       self.mapa[self.filay][self.columnax + 1] = 5
       self.mapa[self.filay][self.columnax + 2] = 2
-      self.columnax += 1 
+      self.columnax += 1
       #Prsonaje_Meta,Caja_Meta,Meta
     elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay][self.columnax + 1] == 6 and self.mapa[self.filay][self.columnax +2] == 4:
       self.mapa[self.filay][self.columnax] =4 
       self.mapa[self.filay][self.columnax + 1] =5 
       self.mapa[self.filay][self.columnax + 2] = 6
-      self.columnax += 1    
+      self.columnax += 1 
   
   def moverIzquierda(self):
       #17 espacio, personaje
@@ -146,25 +146,25 @@ class Sokoban:
       self.mapa[self.filay][self.columnax - 2] = 4
       self.columnax - 1
       #25 espacio,caja,personaje_espacio
-    elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay - 2][self.columnax] == 5:
+    elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay ][self.columnax - 2] == 5:
       self.mapa[self.filay][self.columnax] = 2
       self.mapa[self.filay][self.columnax - 1] = 0
       self.mapa[self.filay][self.columnax - 2] = 4
       self.columnax - 1
       #26meta,caja,personaje_meta
-    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay - 2][self.columnax] == 5:
+    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax - 1] == 2 and self.mapa[self.filay][self.columnax - 2] == 5:
       self.mapa[self.filay][self.columnax] = 6
       self.mapa[self.filay][self.columnax - 1] = 0
       self.mapa[self.filay][self.columnax - 2] = 4
       self.columnax - 1
       #27espacio,caja_meta,personaje_meta
-    elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 6 and self.mapa[self.filay - 2][self.columnax] == 5:
+    elif self.mapa[self.filay][self.columnax] == 1 and self.mapa[self.filay][self.columnax - 1] == 6 and self.mapa[self.filay][self.columnax - 2] == 5:
       self.mapa[self.filay][self.columnax] = 2
       self.mapa[self.filay][self.columnax - 1] = 5
       self.mapa[self.filay][self.columnax - 2] = 4
       self.columnax - 1
       #28meta,caja_meta,personaje_meta
-    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax - 1] == 5 and self.mapa[self.filay - 2][self.columnax] == 6:
+    elif self.mapa[self.filay][self.columnax] == 4 and self.mapa[self.filay][self.columnax - 1] == 5 and self.mapa[self.filay][self.columnax - 2] == 6:
       self.mapa[self.filay][self.columnax] = 6
       self.mapa[self.filay][self.columnax - 1] = 5
       self.mapa[self.filay][self.columnax - 2] = 4
@@ -190,7 +190,9 @@ juego.imprimirMapa()
 while True: #Bucle para jugar N veces
   instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba"
   print(instrucciones)
+  print(juego.filay, ",", juego.columnax)
   movimientos = input("mover a:") #Lee el movimiento del muñeco
+  print (juego.filay, juego.columnax)
   if movimientos == "d":
     juego.moverDerecha()
     juego.imprimirMapa()
