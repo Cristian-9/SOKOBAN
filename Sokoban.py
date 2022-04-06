@@ -9,17 +9,17 @@ class Sokoban:
    #22meta,caja_meta, personaje
   mapa = [
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,0,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,4,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,6,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,5,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
 
-  filay = 6 #Posición muñeco en filas
-  columnax = 6 #Posición muñeco en columnas
+  filay = 1 #Posición muñeco en filas
+  columnax = 1 #Posición muñeco en columnas
 
   def imprimirMapa (self):
     print ("***********************************")  
@@ -239,7 +239,74 @@ class Sokoban:
         self.mapa[self.filay - 2][self.columnax] = 6
         self.filay -=1
   def moverAbajo(self):
-    if
+    #41espacio,personaje
+    if self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 1:
+      self.mapa[self.filay][self.columnax] = 1
+      self.mapa[self.filay + 1][self.columnax] = 0
+      self.filay += 1
+    #42meta,personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 4:
+      self.mapa[self.filay][self.columnax] = 5
+      self.mapa[self.filay + 1][self.columnax] = 1
+      self.filay += 1
+    #43espacio,caja,personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 2 and self.mapa[self.filay + 2][self.columnax] == 1:
+      self.mapa[self.filay][self.columnax] =  1
+      self.mapa[self.filay + 1][self.columnax] = 0 
+      self.mapa[self.filay + 2][self.columnax] = 2
+      self.filay +=1
+      #4meta,caja,personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 2 and self.mapa[self.filay + 2][self.columnax] == 4:
+      self.mapa[self.filay][self.columnax] =  1
+      self.mapa[self.filay + 1][self.columnax] = 0 
+      self.mapa[self.filay + 2][self.columnax] = 6
+      self.filay +=1
+     #45espacio,caja_meta,Personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 6 and self.mapa[self.filay + 2][self.columnax] == 1:
+      self.mapa[self.filay][self.columnax] =  1
+      self.mapa[self.filay + 1][self.columnax] = 5
+      self.mapa[self.filay + 2][self.columnax] = 2
+      self.filay +=1 
+    #46meta,caja_meta, personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 6 and self.mapa[self.filay + 2][self.columnax] == 4:
+      self.mapa[self.filay][self.columnax] =  1
+      self.mapa[self.filay + 1][self.columnax] = 5
+      self.mapa[self.filay + 2][self.columnax] = 6
+      self.filay +=1
+      #47espacio, personaje_meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay + 1][self.columnax] == 1:
+      self.mapa[self.filay][self.columnax] = 4
+      self.mapa[self.filay +1][self.columnax] = 0
+      self.filay +=1
+      #48meta, personaje_meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay + 1][self.columnax] == 4:
+        self.mapa[self.filay][self.columnax] = 4
+        self.mapa[self.filay + 1][self.columnax] = 5
+        self.filay +=1
+      #49espacio,caja, personaje_meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay +1][self.columnax] == 2 and self.mapa[self.filay +2][self.columnax] == 1:
+        self.mapa[self.filay ][self.columnax] =4  
+        self.mapa[self.filay + 1][self.columnax]= 0
+        self.mapa[self.filay + 2][self.columnax] = 2
+        self.filay +=1
+      #50meta,caja,personaje_meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay + 1][self.columnax] == 2 and self.mapa[self.filay + 2][self.columnax] == 4:
+        self.mapa[self.filay][self.columnax] = 4 
+        self.mapa[self.filay + 1][self.columnax] = 0
+        self.mapa[self.filay + 2][self.columnax] = 6
+        self.filay +=1
+      #51espacio, caja_meta,personaje_meta   
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay + 1][self.columnax] == 6 and self.mapa[self.filay + 2][self.columnax] == 1:
+        self.mapa[self.filay][self.columnax] = 4 
+        self.mapa[self.filay + 1][self.columnax] = 5
+        self.mapa[self.filay + 2][self.columnax] = 2
+        self.filay +=1
+      #52meta,caja_meta,personaje_meta
+    elif self.mapa[self.filay][self.columnax] == 5 and self.mapa[self.filay + 1][self.columnax] == 6 and self.mapa[self.filay + 2][self.columnax] == 4:
+        self.mapa[self.filay][self.columnax] = 4 
+        self.mapa[self.filay + 1][self.columnax] = 5
+        self.mapa[self.filay + 2][self.columnax] = 6
+        self.filay +=1
       
 juego = Sokoban()   
 juego.imprimirMapa()
@@ -257,6 +324,9 @@ while True: #Bucle para jugar N veces
     juego.imprimirMapa()
   elif movimientos =="w":
     juego.moverArriba()
+    juego.imprimirMapa()
+  elif movimientos  =="s":
+    juego.moverAbajo()
     juego.imprimirMapa()
     
       
