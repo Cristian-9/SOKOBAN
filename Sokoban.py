@@ -9,21 +9,32 @@ class Sokoban:
    #22meta,caja_meta, personaje
   mapa = [
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
+    [3,1,1,1,2,1,1,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+    [3,4,1,1,1,1,1,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,0,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
 
-  filay = 1 #Posición muñeco en filas
+  filay = 6 #Posición muñeco en filas
   columnax = 1 #Posición muñeco en columnas
 
-  def imprimirMapa (self):
-    print ("***********************************")  
+  def imprimirMapa (self):  
     for fila in self.mapa:
+      for i in self.mapa:
+        print(str(i)
+            .replace(',','')
+            .replace('0','😈')
+            .replace('1', ' ')
+            .replace('2','📦')
+            .replace('3','🚧')
+            .replace('4','🏁')
+            .replace('5','🛐')
+            .replace('6','👑')
+            .replace('[','')
+            .replace(']',''))
       print(fila)
     print ("***********************************")
     print ()
