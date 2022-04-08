@@ -1,5 +1,6 @@
+from os import system, name
 class Sokoban:
-  #0-Personajed
+  #0-Personaje
   #1-Espacio
   #2-Caja
   #3-Pared
@@ -17,29 +18,28 @@ class Sokoban:
     [3,0,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
-
   filay = 6 #Posición muñeco en filas
   columnax = 1 #Posición muñeco en columnas
-
-  def imprimirMapa (self):  
+  def imprimirMapa (self):
+    print ("***********************************")  
     for fila in self.mapa:
       for i in self.mapa:
-        print(str(i)
-            .replace(',','')
-            .replace('0','😈')
-            .replace('1', '  ')
-            .replace('2','📦')
-            .replace('3','🚧')
-            .replace('4','🏁')
-            .replace('5','🛐')
-            .replace('6','👑')
-            .replace('[','')
-            .replace(']',''))
+        if i == 1:
+          print(" ", end = " ")
+        elif i == 3:
+          print(chr(128679), end = "")
+        elif i == 2:
+          print(chr(128230), end = "")
       print(fila)
     print ("***********************************")
     print ()
-    
+  def limpiarPantalla(self):
+      if name == "int":
+          system('cls')#windows
+      else:
+        system('clear')
   def moverDerecha (self):
+    #5Muñeco, Espacio 
     if self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay][self.columnax + 1] == 1:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay][self.columnax + 1] = 0
@@ -180,7 +180,7 @@ class Sokoban:
       self.columnax -= 1
 
   def moverArriba(self):
-     #29espacio,personaje
+    #29espacio,personaje
     if self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay-1][self.columnax] == 1:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay - 1][self.columnax] = 0
@@ -242,8 +242,9 @@ class Sokoban:
         self.mapa[self.filay - 1][self.columnax] = 5
         self.mapa[self.filay - 2][self.columnax] = 6
         self.filay -=1
+      
   def moverAbajo(self):
-#41espacio,personaje
+    #41espacio,personaje
     if self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay + 1][self.columnax] == 1:
       self.mapa[self.filay][self.columnax] = 1
       self.mapa[self.filay + 1][self.columnax] = 0
@@ -311,26 +312,31 @@ class Sokoban:
         self.mapa[self.filay + 1][self.columnax] = 5
         self.mapa[self.filay + 2][self.columnax] = 6
         self.filay +=1
-      
-juego = Sokoban()   
+juego = Sokoban()
+juego.limpiarPantalla()
 juego.imprimirMapa()
 while True: #Bucle para jugar N veces
-  print (juego.filay, juego.columnax)
-  instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba"
+  print((juego.filay, juego.columnax))
+  instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba\nq-Termina el Juego"
   print(instrucciones)
-  print(juego.filay, ",", juego.columnax)
   movimientos = input("mover a:") #Lee el movimiento del muñeco
   if movimientos == "d":
     juego.moverDerecha()
+    juego.limpiarPantalla()
     juego.imprimirMapa()
   elif movimientos == "a":
     juego.moverIzquierda()
+    juego.limpiarPantalla()
     juego.imprimirMapa()
   elif movimientos =="w":
     juego.moverArriba()
+    juego.limpiarPantalla()
     juego.imprimirMapa()
   elif movimientos  =="s":
     juego.moverAbajo()
+    juego.limpiarPantalla()
     juego.imprimirMapa()
-    
+  elif movimientos =="q":
+    print("Juego terminado")
+    break
       
