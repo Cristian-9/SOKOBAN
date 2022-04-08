@@ -7,7 +7,6 @@ class Sokoban:
   #4-Meta
   #5-Personaje_Meta
   #6-Caja_Meta
-   #22meta,caja_meta, personaje
   mapa = [
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,4,3],
@@ -20,18 +19,26 @@ class Sokoban:
 ]
   filay = 6 #Posición muñeco en filas
   columnax = 1 #Posición muñeco en columnas
-  def imprimirMapa (self):
-    print ("***********************************")  
+  def imprimirMapa(self):
+    print ("***********************************+*******")  
     for fila in self.mapa:
       for i in self.mapa:
         if i == 1:
           print(" ", end = " ")
-        elif i == 3:
-          print(chr(128679), end = "")
+        elif i == 0:
+          print(chr(128520), end ="")
         elif i == 2:
           print(chr(128230), end = "")
+        elif i == 3:
+          print(chr(128679), end = "")
+        elif i == 4:
+          print(chr(127937), end = "")
+        elif i == 5:
+          print(chr(128720), end = "")
+        elif i == 6:
+          print(chr(128081), end = "")
       print(fila)
-    print ("***********************************")
+    print ("******************************************")
     print ()
   def limpiarPantalla(self):
       if name == "int":
