@@ -17,8 +17,7 @@ class Sokoban:
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
-  #filay = 6 #Posición muñeco en filas
-  #columnax = 1 #Posición muñeco en columnas
+  
   def imprimirMapa(self):
     print ("***********************************+*******")  
     for fila in self.mapa:
@@ -215,6 +214,12 @@ class Sokoban:
       self.mapa[self.filay][self.columnax] =  1
       self.mapa[self.filay - 1][self.columnax] = 0 
       self.mapa[self.filay - 2][self.columnax] = 6
+      self.filay -=1
+      #33espacio,caja_meta,personaje
+    elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay - 1][self.columnax] == 6 and self.mapa[self.filay - 2][self.columnax] == 1:
+      self.mapa[self.filay][self.columnax] = 1
+      self.mapa[self.filay - 1][self.columnax] = 5
+      self.mapa[self.filay - 2][self.columnax] = 2
       self.filay -=1
       #34meta,caja_meta, personaje
     elif self.mapa[self.filay][self.columnax] == 0 and self.mapa[self.filay - 1][self.columnax] == 6 and self.mapa[self.filay - 2][self.columnax] == 4:
