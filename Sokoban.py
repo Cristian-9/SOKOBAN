@@ -11,14 +11,14 @@ class Sokoban:
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,4,3],
     [3,1,1,1,1,1,1,1,1,2,1,1,1,3],
-    [3,4,1,1,2,1,1,1,1,1,1,1,1,3],
+    [3,4,1,1,2,1,1,1,1,1,0,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,0,1,1,1,1,1,1,1,1,1,1,1,3],
+    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
-  filay = 6 #Posición muñeco en filas
-  columnax = 1 #Posición muñeco en columnas
+  #filay = 6 #Posición muñeco en filas
+  #columnax = 1 #Posición muñeco en columnas
   def imprimirMapa(self):
     print ("***********************************+*******")  
     for fila in self.mapa:
@@ -40,6 +40,13 @@ class Sokoban:
       print(fila)
     print ("******************************************")
     print ()
+    
+  def encontraPersonaje( self ):
+    for  fila  in  range(len(self. mapa)): 
+      for  columna in  range (len(self.mapa[fila])): 
+        if self.mapa[fila][columna] ==  0 : 
+          self.filay  =  fila                       
+          self.columnax =  columna 
   def limpiarPantalla(self):
       if name == "int":
           system('cls')#windows
@@ -320,6 +327,7 @@ class Sokoban:
         self.mapa[self.filay + 2][self.columnax] = 6
         self.filay +=1
 juego = Sokoban()
+juego.encontraPersonaje()
 juego.limpiarPantalla()
 juego.imprimirMapa()
 while True: #Bucle para jugar N veces
