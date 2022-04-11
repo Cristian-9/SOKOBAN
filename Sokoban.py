@@ -1,51 +1,58 @@
 from os import system, name
 class Sokoban:
-  #0-Personaje
-  #1-Espacio
-  #2-Caja
-  #3-Pared
-  #4-Meta
-  #5-Personaje_Meta
-  #6-Caja_Meta
-  mapa = [
-    [3,3,3,3,3,3,3,3,3,3,3,3,3,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,4,3],
-    [3,1,1,1,1,1,1,1,1,2,1,1,1,3],
-    [3,4,1,1,2,1,1,1,1,1,0,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,1,1,1,1,1,1,1,1,1,1,1,1,3],
-    [3,3,3,3,3,3,3,3,3,3,3,3,3,3]
-]
-  
+  mapa = []
+  filay = 0
+  columnax = 0
+  nivel = ()
+  completo = False
+  def crearMapa(self):
+    for i in self.abrirNivel:
+      linea = []
+      for digito in i:
+        if digito == "\n":
+          continue
+        linea.append(int(digito))
+      self.mapa.append(linea)
   def imprimirMapa(self):
-    print ("***********************************+*******")  
-    for fila in self.mapa:
-      for i in self.mapa:
-        if i == 1:
-          print(" ", end = " ")
-        elif i == 0:
-          print(chr(128520), end ="")
-        elif i == 2:
-          print(chr(128230), end = "")
-        elif i == 3:
-          print(chr(128679), end = "")
-        elif i == 4:
-          print(chr(127937), end = "")
-        elif i == 5:
-          print(chr(128720), end = "")
-        elif i == 6:
-          print(chr(128081), end = "")
-      print(fila)
-    print ("******************************************")
-    print ()
+        for fila in self.mapa:
+            for i in fila:
+                if i == 0:
+                    print(chr(128520), end="")
+                elif i == 1:
+                    print("  ", end="")
+                elif i == 2:
+                    print(chr(128230), end= "")
+                elif i == 3:
+                    print(chr(128679), end="")
+                elif i == 4:
+                    print(chr(127937), end="")
+                elif i == 5:
+                    print(chr(129430), end="")
+                elif i == 6:
+                    print(chr(128081), end="")
+                else:
+                    print(i, end="")
+            print()
     
+        
+        
   def encontraPersonaje( self ):
     for  fila  in  range(len(self. mapa)): 
       for  columna in  range (len(self.mapa[fila])): 
         if self.mapa[fila][columna] ==  0 : 
           self.filay  =  fila                       
           self.columnax =  columna 
+  def evaluarMapa(self):
+        verificador = []
+        for linea in self.mapa:
+            num2 = linea.count(4)
+            verificador.append(num2)
+        if sum(verificador) == 0:
+            self.limpiarPantalla()
+            print('¡EL NIVEL ESTA COMPLETO!')
+            self.completo = True
+        else:
+            pass        
   def limpiarPantalla(self):
       if name == "int":
           system('cls')#windows
@@ -331,12 +338,67 @@ class Sokoban:
         self.mapa[self.filay + 1][self.columnax] = 5
         self.mapa[self.filay + 2][self.columnax] = 6
         self.filay +=1
+  def comenzarJuego(self):
+      print('\nActualmente el juego cuenta con 3 niveles')
+      comienza = False
+      while comienza == False:
+          nuevo = input('¿Qué nivel desea abrir? \n\t[ 1 ° 2 ° 3 ]\n: ')
+          if nuevo == '1':
+              self.abrirNivel = open("Danilv0.txt", "r")
+              comienza = True
+          elif nuevo == '2':
+              self.abrirNivel = open("Danilv1.txt", "r")
+              comienza = True
+          elif nuevo == '3':
+              self.abrirNivel = open("Danilv2.txt", "r")
+              comienza = True
+          else:
+            self.limpiarPantalla()
+            print("El juego solo tiene 3 niveles")
+      self.limpiarPantalla()
+      self.crearMapa()
+      self.encontraPersonaje()
+      self.imprimirMapa()
+
+      while self.completo == False:
+            print("Posición actual: ", "[", self.filay, ",", self.columnax, "]")
+            movimiento = input('Siguiente movimiento: ')
+            if movimiento == "w":
+                self.moverArriba()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
+            elif movimiento == 's':
+                self.moverAbajo()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
+            elif movimiento == 'd':
+                self.moverDerecha()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
+            elif movimiento == 'a':
+                self.moverIzquierda()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
+            else:
+                self.limpiarPantalla()
+juego = Sokoban()
+juego.comenzarJuego()
+continua = input('¿Deseas continuar? \n\t[s/n]\n:')
+juego.limpiarPantalla()
+while continua == 's':
+    juego.completo = False
+
+    juego.comenzarJuego()
+    continua = input('¿Deseas continuar? \n\t[s/n]\n:')
 juego = Sokoban()
 juego.encontraPersonaje()
 juego.limpiarPantalla()
 juego.imprimirMapa()
 while True: #Bucle para jugar N veces
-  print((juego.filay, juego.columnax))
   instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba\nq-Termina el Juego"
   print(instrucciones)
   movimientos = input("mover a:") #Lee el movimiento del muñeco
@@ -344,6 +406,7 @@ while True: #Bucle para jugar N veces
     juego.moverDerecha()
     juego.limpiarPantalla()
     juego.imprimirMapa()
+    
   elif movimientos == "a":
     juego.moverIzquierda()
     juego.limpiarPantalla()
