@@ -14,27 +14,25 @@ class Sokoban:
         linea.append(int(digito))
       self.mapa.append(linea)
   def imprimirMapa(self):
-        for fila in self.mapa:
-            for i in fila:
-                if i == 0:
-                    print(chr(128520), end="")
-                elif i == 1:
-                    print("  ", end="")
-                elif i == 2:
-                    print(chr(128230), end= "")
-                elif i == 3:
-                    print(chr(128679), end="")
-                elif i == 4:
-                    print(chr(127937), end="")
-                elif i == 5:
-                    print(chr(129430), end="")
-                elif i == 6:
-                    print(chr(128081), end="")
-                else:
-                    print(i, end="")
-            print()
-    
-        
+      for fila in self.mapa:
+          for i in fila:
+              if i == 0:
+                  print(chr(128520), end="")
+              elif i == 1:
+                  print("  ", end="")
+              elif i == 2:
+                  print(chr(128230), end= "")
+              elif i == 3:
+                  print(chr(128679), end="")
+              elif i == 4:
+                  print(chr(127937), end="")
+              elif i == 5:
+                  print(chr(129430), end="")
+              elif i == 6:
+                  print(chr(128081), end="")
+              else:
+                  print(i, end="")
+          print()
         
   def encontraPersonaje( self ):
     for  fila  in  range(len(self. mapa)): 
@@ -339,10 +337,10 @@ class Sokoban:
         self.mapa[self.filay + 2][self.columnax] = 6
         self.filay +=1
   def comenzarJuego(self):
-      print('\nActualmente el juego cuenta con 3 niveles')
+      print('Bienvenido \nActualmente el juego cuenta con 4 niveles')
       comienza = False
       while comienza == False:
-          nuevo = input('¿Qué nivel desea abrir? \n\t[ 1 ° 2 ° 3 ]\n: ')
+          nuevo = input('¿Qué nivel desea abrir? \n\t 1 ° 2 ° 3 °4 \n: ')
           if nuevo == '1':
               self.abrirNivel = open("Danilv0.txt", "r")
               comienza = True
@@ -352,9 +350,12 @@ class Sokoban:
           elif nuevo == '3':
               self.abrirNivel = open("Danilv2.txt", "r")
               comienza = True
+          elif nuevo == '4':
+              self.abrirNivel = open("Danilv3.txt", "r")
+              comienza = True
           else:
             self.limpiarPantalla()
-            print("El juego solo tiene 3 niveles")
+            print("El juego solo tiene 4 niveles")
       self.limpiarPantalla()
       self.crearMapa()
       self.encontraPersonaje()
@@ -363,7 +364,6 @@ class Sokoban:
       while self.completo == False:
             instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba\nq-Termina el Juego"
             print(instrucciones)
-        
             print("Posición: ", "[", self.filay, ",", self.columnax, "]")
             movimiento = input('Movimiento: ')
             if movimiento == "w":
@@ -388,18 +388,16 @@ class Sokoban:
                 self.evaluarMapa()
             else:
                 self.limpiarPantalla()
+                print("Saliste del Juego")
+                break
+                
 juego = Sokoban()
 juego.comenzarJuego()
-continua = input('¿Deseas continuar? \n\t[s/n]\n:')
+continua = input('¿Deseas continuar? \n\ts/n\n:')
 juego.limpiarPantalla()
 while continua == 's':
     juego.completo = False
-
     juego.comenzarJuego()
-    continua = input('¿Deseas continuar? \n\t[s/n]\n:')
-juego = Sokoban()
-juego.encontraPersonaje()
-juego.limpiarPantalla()
-juego.imprimirMapa()
-
-      
+    juego.limpiarPantalla()
+else:
+  print("Juego terminado\n¡¡Gracias por Jugar!!")
