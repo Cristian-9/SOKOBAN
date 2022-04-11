@@ -361,8 +361,11 @@ class Sokoban:
       self.imprimirMapa()
 
       while self.completo == False:
-            print("Posición actual: ", "[", self.filay, ",", self.columnax, "]")
-            movimiento = input('Siguiente movimiento: ')
+            instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba\nq-Termina el Juego"
+            print(instrucciones)
+        
+            print("Posición: ", "[", self.filay, ",", self.columnax, "]")
+            movimiento = input('Movimiento: ')
             if movimiento == "w":
                 self.moverArriba()
                 self.limpiarPantalla()
@@ -398,28 +401,5 @@ juego = Sokoban()
 juego.encontraPersonaje()
 juego.limpiarPantalla()
 juego.imprimirMapa()
-while True: #Bucle para jugar N veces
-  instrucciones = "Las letras Indican a donde quieres ir\nd-Derecha\na-Izquierda\nw-Arriba\nq-Termina el Juego"
-  print(instrucciones)
-  movimientos = input("mover a:") #Lee el movimiento del muñeco
-  if movimientos == "d":
-    juego.moverDerecha()
-    juego.limpiarPantalla()
-    juego.imprimirMapa()
-    
-  elif movimientos == "a":
-    juego.moverIzquierda()
-    juego.limpiarPantalla()
-    juego.imprimirMapa()
-  elif movimientos =="w":
-    juego.moverArriba()
-    juego.limpiarPantalla()
-    juego.imprimirMapa()
-  elif movimientos  =="s":
-    juego.moverAbajo()
-    juego.limpiarPantalla()
-    juego.imprimirMapa()
-  elif movimientos =="q":
-    print("Juego terminado")
-    break
+
       
