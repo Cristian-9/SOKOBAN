@@ -400,4 +400,4 @@ while continua == 's':
     juego.comenzarJuego()
     juego.limpiarPantalla()
 else:
-  print("Juego terminado\n¡¡Gracias por Jugar!!")
+  print("¡¡Juego terminado!!\n¡¡Gracias por Jugar!!")
