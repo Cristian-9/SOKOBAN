@@ -385,15 +385,16 @@ class Sokoban:
                 self.evaluarMapa()
             else:
                 self.limpiarPantalla()
+                print("Verifique su Digito")
 juego = Sokoban()
 juego.comenzarJuego()
 continua = input('¿Deseas continuar? \n\t[s/n]\n:')
 juego.limpiarPantalla()
 while continua == 's':
     juego.completo = False
-
     juego.comenzarJuego()
     continua = input('¿Deseas continuar? \n\t[s/n]\n:')
+print("Hemos llegado al final")
 juego = Sokoban()
 juego.encontraPersonaje()
 juego.limpiarPantalla()
