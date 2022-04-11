@@ -339,10 +339,10 @@ class Sokoban:
         self.mapa[self.filay + 2][self.columnax] = 6
         self.filay +=1
   def comenzarJuego(self):
-      print('\nActualmente el juego cuenta con 3 niveles')
+      print('\n Escoge entre 3 niveles')
       comienza = False
       while comienza == False:
-          nuevo = input('¿Qué nivel desea abrir? \n\t[ 1 ° 2 ° 3 ]\n: ')
+          nuevo = input('¿Qué nivel desea abrir? \n\t 1 ° 2 ° 3 \n: ')
           if nuevo == '1':
               self.abrirNivel = open("Danilv0.txt", "r")
               comienza = True
@@ -363,17 +363,7 @@ class Sokoban:
       while self.completo == False:
             print("Posición actual: ", "[", self.filay, ",", self.columnax, "]")
             movimiento = input('Siguiente movimiento: ')
-            if movimiento == "w":
-                self.moverArriba()
-                self.limpiarPantalla()
-                self.imprimirMapa()
-                self.evaluarMapa()
-            elif movimiento == 's':
-                self.moverAbajo()
-                self.limpiarPantalla()
-                self.imprimirMapa()
-                self.evaluarMapa()
-            elif movimiento == 'd':
+            if movimiento == 'd':
                 self.moverDerecha()
                 self.limpiarPantalla()
                 self.imprimirMapa()
@@ -383,17 +373,27 @@ class Sokoban:
                 self.limpiarPantalla()
                 self.imprimirMapa()
                 self.evaluarMapa()
+            elif movimiento == "w":
+                self.moverArriba()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
+            elif movimiento == 's':
+                self.moverAbajo()
+                self.limpiarPantalla()
+                self.imprimirMapa()
+                self.evaluarMapa()
             else:
                 self.limpiarPantalla()
                 print("Verifique su Digito")
 juego = Sokoban()
 juego.comenzarJuego()
-continua = input('¿Deseas continuar? \n\t[s/n]\n:')
 juego.limpiarPantalla()
+continua = input('¿Deseas continuar? \n\ts/n\n:')
 while continua == 's':
     juego.completo = False
     juego.comenzarJuego()
-    continua = input('¿Deseas continuar? \n\t[s/n]\n:')
+    continua = input('¿Deseas continuar? \n\ts/n\n:')
 print("Hemos llegado al final")
 juego = Sokoban()
 juego.encontraPersonaje()
